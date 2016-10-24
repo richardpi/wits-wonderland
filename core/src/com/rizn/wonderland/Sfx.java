@@ -39,6 +39,8 @@ public class Sfx {
                 break;
 
             case 4:
+            case 5:
+            case 6:
                 currentMusic = music2;
                 break;
 

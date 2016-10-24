@@ -43,6 +43,13 @@ public class Levels {
     public static int LEVEL_BACKGROUND_4_WIDTH = 100;
     public static int LEVEL_BACKGROUND_4_HEIGHT = 80;
 
+    public static String LEVEL_MAP_5 = "data/levels5.png";
+    public static String LEVEL_NAME_5 = "World 2 - 2";
+    public static int LEVEL_BACKGROUND_5_X = 0;
+    public static int LEVEL_BACKGROUND_5_Y = 30;
+    public static int LEVEL_BACKGROUND_5_WIDTH = 100;
+    public static int LEVEL_BACKGROUND_5_HEIGHT = 80;
+
     public static String getLevelTiles(int level) {
 
         switch (level) {
@@ -52,6 +59,8 @@ public class Levels {
                 return LEVEL_TILES_WORLD_1;
 
             case 4:
+            case 5:
+            case 6:
                 return LEVEL_TILES_WORLD_2;
 
             default:
@@ -69,6 +78,8 @@ public class Levels {
                 return LEVEL_START_SCREEN_WORLD_1;
 
             case 4:
+            case 5:
+            case 6:
                 return LEVEL_START_SCREEN_WORLD_2;
 
             default:
@@ -91,6 +102,9 @@ public class Levels {
 
             case 4:
                 return LEVEL_MAP_4;
+
+            case 5:
+                return LEVEL_MAP_5;
 
             default:
                 throw new IllegalArgumentException("level doesn't exist");
@@ -116,6 +130,10 @@ public class Levels {
             case 4:
                 return LEVEL_NAME_4;
 
+            case 5:
+                return LEVEL_NAME_5;
+
+
             default:
                 throw new IllegalArgumentException("level doesn't exist");
         }
@@ -131,6 +149,8 @@ public class Levels {
                 return LEVEL_BACKGROUND_WORLD_1;
 
             case 4:
+            case 5:
+            case 6:
                 return LEVEL_BACKGROUND_WORLD_2;
 
             default:
@@ -153,6 +173,9 @@ public class Levels {
 
             case 4:
                 return new int[]{LEVEL_BACKGROUND_4_X, LEVEL_BACKGROUND_4_Y, LEVEL_BACKGROUND_4_WIDTH, LEVEL_BACKGROUND_4_HEIGHT};
+
+            case 5:
+                return new int[]{LEVEL_BACKGROUND_5_X, LEVEL_BACKGROUND_5_Y, LEVEL_BACKGROUND_5_WIDTH, LEVEL_BACKGROUND_5_HEIGHT};
 
             default:
                 throw new IllegalArgumentException("background coord doesn't exist");
