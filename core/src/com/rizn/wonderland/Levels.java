@@ -50,6 +50,13 @@ public class Levels {
     public static int LEVEL_BACKGROUND_5_WIDTH = 100;
     public static int LEVEL_BACKGROUND_5_HEIGHT = 80;
 
+    public static String LEVEL_MAP_6 = "data/levels6.png";
+    public static String LEVEL_NAME_6 = "World 2 - 3";
+    public static int LEVEL_BACKGROUND_6_X = 0;
+    public static int LEVEL_BACKGROUND_6_Y = 40;
+    public static int LEVEL_BACKGROUND_6_WIDTH = 100;
+    public static int LEVEL_BACKGROUND_6_HEIGHT = 80;
+
     public static String getLevelTiles(int level) {
 
         switch (level) {
@@ -106,6 +113,9 @@ public class Levels {
             case 5:
                 return LEVEL_MAP_5;
 
+            case 6:
+                return LEVEL_MAP_6;
+
             default:
                 throw new IllegalArgumentException("level doesn't exist");
         }
@@ -133,6 +143,8 @@ public class Levels {
             case 5:
                 return LEVEL_NAME_5;
 
+            case 6:
+                return LEVEL_NAME_6;
 
             default:
                 throw new IllegalArgumentException("level doesn't exist");
@@ -176,6 +188,9 @@ public class Levels {
 
             case 5:
                 return new int[]{LEVEL_BACKGROUND_5_X, LEVEL_BACKGROUND_5_Y, LEVEL_BACKGROUND_5_WIDTH, LEVEL_BACKGROUND_5_HEIGHT};
+
+            case 6:
+                return new int[]{LEVEL_BACKGROUND_6_X, LEVEL_BACKGROUND_6_Y, LEVEL_BACKGROUND_6_WIDTH, LEVEL_BACKGROUND_6_HEIGHT};
 
             default:
                 throw new IllegalArgumentException("background coord doesn't exist");
