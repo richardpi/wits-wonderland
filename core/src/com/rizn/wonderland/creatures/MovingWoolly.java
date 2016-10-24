@@ -1,29 +1,31 @@
 
-package com.rizn.wonderland;
+package com.rizn.wonderland.creatures;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.rizn.wonderland.Bob;
+import com.rizn.wonderland.Map;
 
-public class MovingBee {
+public class MovingWoolly {
 
     public enum Start {
         LEFT, RIGHT
     }
 
-    static final int FORWARD = 1;
-    static final int BACKWARD = -1;
-    static final float FORWARD_VEL = 4;
-    static final float BACKWARD_VEL = 4;
+    public static final int FORWARD = 1;
+    public static final int BACKWARD = -1;
+    public static final float FORWARD_VEL = 5;
+    public static final float BACKWARD_VEL = 5;
 
-    int state = FORWARD;
+    public int state = FORWARD;
 
-    Map map;
-    Rectangle bounds = new Rectangle();
-    Vector2 vel = new Vector2();
-    Vector2 pos = new Vector2();
-    float angle = 0;
+    public Map map;
+    public Rectangle bounds = new Rectangle();
+    public Vector2 vel = new Vector2();
+    public Vector2 pos = new Vector2();
+    public float angle = 0;
 
-    public MovingBee(Map map, float x, float y) {
+    public MovingWoolly(Map map, float x, float y) {
         this.map = map;
         pos.x = x;
         pos.y = y;
@@ -48,11 +50,11 @@ public class MovingBee {
         pos.add(vel.x * deltaTime, vel.y * deltaTime);
         boolean change = false;
         if (state == FORWARD) {
-            int c = map.tiles[(int) pos.x][map.tiles[0].length - (int) pos.y - 1];
-            change = c == Map.MOVING_FLY_WALL;
+            int c = map.tiles[(int) pos.x][map.tiles[0].length - (int) pos.y];
+            change = c == Map.EMPTY;
         } else {
-            int c = map.tiles[(int) pos.x + 1][map.tiles[0].length - (int) pos.y - 1];
-            change = c == Map.MOVING_FLY_WALL;
+            int c = map.tiles[(int) pos.x + 1][map.tiles[0].length - (int) pos.y];
+            change = c == Map.EMPTY;
         }
         if (change) {
             pos.x -= vel.x * deltaTime;

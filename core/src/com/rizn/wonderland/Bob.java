@@ -8,27 +8,27 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bob {
-    static final int IDLE = 0;
-    static final int RUN = 1;
-    static final int JUMP = 2;
-    static final int DYING = 4;
-    static final int DEAD = 5;
-    static final int LEFT = -1;
-    static final int RIGHT = 1;
-    static final float ACCELERATION = 20f;
-    static final float JUMP_VELOCITY = 16;
-    static final float GRAVITY = 20.0f;
-    static final float MAX_VEL = 6f;
-    static final float DAMP = 0.90f;
+    public static final int IDLE = 0;
+    public static final int RUN = 1;
+    public static final int JUMP = 2;
+    public static final int DYING = 4;
+    public static final int DEAD = 5;
+    public static final int LEFT = -1;
+    public static final int RIGHT = 1;
+    public static final float ACCELERATION = 20f;
+    public static final float JUMP_VELOCITY = 16;
+    public static final float GRAVITY = 20.0f;
+    public static final float MAX_VEL = 6f;
+    public static final float DAMP = 0.90f;
 
-    Vector2 pos = new Vector2();
-    Vector2 accel = new Vector2();
-    Vector2 vel = new Vector2();
+    public Vector2 pos = new Vector2();
+    public Vector2 accel = new Vector2();
+    public Vector2 vel = new Vector2();
     public Rectangle bounds = new Rectangle();
 
-    int state = IDLE;
-    float stateTime = 0;
-    int dir = LEFT;
+    public int state = IDLE;
+    public float stateTime = 0;
+    public int dir = LEFT;
     Map map;
     boolean grounded = false;
     boolean playDeadSound = true;

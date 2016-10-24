@@ -1,10 +1,10 @@
 
-package com.rizn.wonderland;
+package com.rizn.wonderland.creatures;
 
 import com.badlogic.gdx.math.Rectangle;
 
 public class Dispenser {
-    Rectangle bounds = new Rectangle();
+    public Rectangle bounds = new Rectangle();
 
     public Dispenser(float x, float y) {
         bounds.x = x;

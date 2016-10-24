@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.rizn.wonderland.colours.*;
+import com.rizn.wonderland.creatures.*;
 
 public class MapRenderer {
     Map map;

@@ -1,22 +1,24 @@
 
-package com.rizn.wonderland;
+package com.rizn.wonderland.creatures;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.rizn.wonderland.Bob;
+import com.rizn.wonderland.Map;
 
 public class MovingSpikes {
-    static final int FORWARD = 1;
-    static final int BACKWARD = -1;
-    static final float FORWARD_VEL = 10;
-    static final float BACKWARD_VEL = 4;
+    public static final int FORWARD = 1;
+    public static final int BACKWARD = -1;
+    public static final float FORWARD_VEL = 10;
+    public static final float BACKWARD_VEL = 4;
 
-    int state = FORWARD;
+    public int state = FORWARD;
 
-    Map map;
-    Rectangle bounds = new Rectangle();
-    Vector2 vel = new Vector2();
-    Vector2 pos = new Vector2();
-    float angle = 0;
+    public Map map;
+    public Rectangle bounds = new Rectangle();
+    public Vector2 vel = new Vector2();
+    public Vector2 pos = new Vector2();
+    public float angle = 0;
     int fx = 0;
     int fy = 0;
     int bx = 0;
