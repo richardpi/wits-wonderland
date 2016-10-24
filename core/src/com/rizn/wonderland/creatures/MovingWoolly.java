@@ -51,10 +51,10 @@ public class MovingWoolly {
         boolean change = false;
         if (state == FORWARD) {
             int c = map.tiles[(int) pos.x][map.tiles[0].length - (int) pos.y];
-            change = c == Map.EMPTY;
+            change = c == Map.EMPTY || c == Map.SPIKES;
         } else {
             int c = map.tiles[(int) pos.x + 1][map.tiles[0].length - (int) pos.y];
-            change = c == Map.EMPTY;
+            change = c == Map.EMPTY || c == Map.SPIKES;
         }
         if (change) {
             pos.x -= vel.x * deltaTime;
