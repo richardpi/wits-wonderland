@@ -55,6 +55,7 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.F1) && DevMode.isDevMode()) {
+            Sfx.disposeMusic();
             Status.setSlot(1);
             game.setScreen(new GameScreen(game));
         }
