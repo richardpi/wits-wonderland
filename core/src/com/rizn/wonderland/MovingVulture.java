@@ -12,8 +12,8 @@ public class MovingVulture {
 
     static final int FORWARD = 1;
     static final int BACKWARD = -1;
-    static final float FORWARD_VEL = 4;
-    static final float BACKWARD_VEL = 4;
+    static final float FORWARD_VEL = 5;
+    static final float BACKWARD_VEL = 5;
 
     int state = FORWARD;
 
