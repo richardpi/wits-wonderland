@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.rizn.wonderland.Wonderland;
-import com.rizn.wonderland.Wonderland;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
