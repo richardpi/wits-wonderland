@@ -2,6 +2,8 @@ package com.rizn.wonderland;
 
 public class Levels {
 
+    public static int MAX_LEVELS = 6;
+
     public static String LEVEL_NAME_START = "New Game";
 
     public static String LEVEL_TILES_WORLD_1 = "data/world1.png";

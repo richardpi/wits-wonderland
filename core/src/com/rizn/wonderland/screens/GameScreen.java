@@ -36,8 +36,13 @@ public class GameScreen extends BaseScreen {
         controlRenderer.render();
 
         if (Counter.checkAllSelected() || (Gdx.input.isKeyPressed(Keys.F10) && DevMode.isDevMode()) || (DevMode.checkIfDevPressed() && DevMode.isDevMode())) {
-            Save.setLevel(Status.getSlot(), Save.getLevel(Status.getSlot()) + 1);
-            gameOver();
+
+            if (Levels.MAX_LEVELS == Save.getLevel(Status.getSlot())) {
+                endGame();
+            } else {
+                Save.setLevel(Status.getSlot(), Save.getLevel(Status.getSlot()) + 1);
+                gameOver();
+            }
         }
 
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
@@ -54,5 +59,11 @@ public class GameScreen extends BaseScreen {
         Counter.reset();
         Sfx.disposeMusic();
         game.setScreen(new StartScreen(game));
+    }
+
+    private void endGame() {
+        Counter.reset();
+        Sfx.disposeMusic();
+        game.setScreen(new EndScreen(game));
     }
 }
