@@ -20,12 +20,15 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
     Sprite mainmenuBtn;
     Sprite tryagainBtn;
 
+    boolean isVisible = false;
+
     public GameOverScreen(Game game) {
         super(game);
     }
 
     @Override
     public void show() {
+        isVisible = true;
         Gdx.input.setInputProcessor(this);
 
         Sfx.init();
@@ -57,8 +60,11 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
 
     @Override
     public void hide() {
+        isVisible = false;
         batch.dispose();
         intro.getTexture().dispose();
+        mainmenuBtn.getTexture().dispose();
+        tryagainBtn.getTexture().dispose();
     }
 
     @Override
@@ -78,15 +84,18 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        float pointerX = InputTransform.getCursorToModelX(Gdx.graphics.getWidth(), screenX);
-        float pointerY = InputTransform.getCursorToModelY(Gdx.graphics.getHeight(), screenY);
 
-        if (InputTransform.checkIfClicked(mainmenuBtn, pointerX, pointerY)) {
-            goMainMenu();
-        }
+        if (isVisible) {
+            float pointerX = InputTransform.getCursorToModelX(Gdx.graphics.getWidth(), screenX);
+            float pointerY = InputTransform.getCursorToModelY(Gdx.graphics.getHeight(), screenY);
 
-        if (InputTransform.checkIfClicked(tryagainBtn, pointerX, pointerY)) {
-            goTryAgain();
+            if (InputTransform.checkIfClicked(mainmenuBtn, pointerX, pointerY)) {
+                goMainMenu();
+            }
+
+            if (InputTransform.checkIfClicked(tryagainBtn, pointerX, pointerY)) {
+                goTryAgain();
+            }
         }
 
         return false;

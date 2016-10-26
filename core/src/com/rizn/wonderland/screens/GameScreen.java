@@ -44,7 +44,7 @@ public class GameScreen extends BaseScreen {
                 endGame();
             } else {
                 Save.setLevel(Status.getSlot(), Save.getLevel(Status.getSlot()) + 1);
-                gameOver();
+                nextLevel();
             }
         }
 
@@ -70,5 +70,11 @@ public class GameScreen extends BaseScreen {
         Counter.reset();
         Sfx.disposeMusic();
         game.setScreen(new EndScreen(game));
+    }
+
+    private void nextLevel() {
+        Counter.reset();
+        Sfx.disposeMusic();
+        game.setScreen(new StartScreen(game));
     }
 }
