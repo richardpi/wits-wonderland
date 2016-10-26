@@ -17,12 +17,12 @@ public class Sfx {
     public static Sound die;
 
     public static void init() {
-        sound = Gdx.audio.newSound(Gdx.files.internal("data/button-37.mp3"));
-        jump = Gdx.audio.newSound(Gdx.files.internal("data/jump2.wav"));
-        die = Gdx.audio.newSound(Gdx.files.internal("data/die.wav"));
+        sound = Gdx.audio.newSound(Gdx.files.internal("data/button-37.ogg"));
+        jump = Gdx.audio.newSound(Gdx.files.internal("data/jump2.ogg"));
+        die = Gdx.audio.newSound(Gdx.files.internal("data/die.ogg"));
 
         intro = Gdx.audio.newMusic(Gdx.files.internal("data/welcome_screen.ogg"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("data/jungle-run-01.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("data/jungle_run.ogg"));
         music2 = Gdx.audio.newMusic(Gdx.files.internal("data/little_swans.ogg"));
     }
 
