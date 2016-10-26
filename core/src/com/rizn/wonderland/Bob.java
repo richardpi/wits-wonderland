@@ -87,7 +87,7 @@ public class Bob {
         boolean jumpButton = (Gdx.input.isTouched(0) && x0 > 416 && x0 < 480 && y0 < 64)
                 || (Gdx.input.isTouched(1) && x1 > 416 && x1 < 480 && y0 < 64);
 
-        if ((Gdx.input.isKeyPressed(Keys.W) || jumpButton) && state != JUMP) {
+        if ((Gdx.input.isKeyPressed(Keys.W) || jumpButton) && state != JUMP && grounded == true) {
             state = JUMP;
             vel.y = JUMP_VELOCITY;
             grounded = false;
