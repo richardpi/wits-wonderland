@@ -30,18 +30,21 @@ public class Sfx {
         switch (level) {
             case 0:
                 currentMusic = intro;
+                currentMusic.setVolume(0.7f);
                 break;
 
             case 1:
             case 2:
             case 3:
                 currentMusic = music;
+                currentMusic.setVolume(0.7f);
                 break;
 
             case 4:
             case 5:
             case 6:
                 currentMusic = music2;
+                currentMusic.setVolume(1f);
                 break;
 
             default:
@@ -51,7 +54,6 @@ public class Sfx {
 
     public static void playMusic() {
         currentMusic.play();
-        currentMusic.setVolume(0.7f);
         currentMusic.setLooping(true);
     }
 
