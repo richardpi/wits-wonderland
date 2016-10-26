@@ -67,6 +67,7 @@ public class Bob {
 
             if (stateTime > 0.4f) {
                 state = DEAD;
+                Lives.reduce();
                 playDeadSound = true;
             }
         }

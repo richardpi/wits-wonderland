@@ -11,6 +11,7 @@ public class GameScreen extends BaseScreen {
     Map map;
     MapRenderer renderer;
     OnscreenControlRenderer controlRenderer;
+    public Lives lives;
 
     public GameScreen(Game game) {
         super(game);
@@ -21,6 +22,7 @@ public class GameScreen extends BaseScreen {
         map = new Map();
         renderer = new MapRenderer(map);
         controlRenderer = new OnscreenControlRenderer(map);
+        lives = new Lives(map);
         Sfx.setCurrentMusic(Save.getLevel(Status.getSlot()));
         Sfx.playMusic();
     }
@@ -34,6 +36,7 @@ public class GameScreen extends BaseScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         renderer.render(delta);
         controlRenderer.render();
+        lives.render();
 
         if (Counter.checkAllSelected() || (Gdx.input.isKeyPressed(Keys.F10) && DevMode.isDevMode()) || (DevMode.checkIfDevPressed() && DevMode.isDevMode())) {
 
@@ -45,7 +48,7 @@ public class GameScreen extends BaseScreen {
             }
         }
 
-        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+        if (Lives.lives <= 0 || Gdx.input.isKeyPressed(Keys.ESCAPE)) {
             gameOver();
         }
     }
@@ -53,12 +56,14 @@ public class GameScreen extends BaseScreen {
     @Override
     public void hide() {
         renderer.dispose();
+        controlRenderer.dispose();
+        lives.dispose();
     }
 
     private void gameOver() {
         Counter.reset();
         Sfx.disposeMusic();
-        game.setScreen(new StartScreen(game));
+        game.setScreen(new GameOverScreen(game));
     }
 
     private void endGame() {

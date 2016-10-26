@@ -3,31 +3,46 @@ package com.rizn.wonderland.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.rizn.wonderland.InputTransform;
 import com.rizn.wonderland.Sfx;
 
-public class CreditsScreen extends BaseScreen  implements InputProcessor {
+public class GameOverScreen extends BaseScreen implements InputProcessor {
     TextureRegion intro;
     SpriteBatch batch;
     float time = 0;
 
-    public CreditsScreen(Game game) {
+    Sprite mainmenuBtn;
+    Sprite tryagainBtn;
+
+    public GameOverScreen(Game game) {
         super(game);
     }
 
     @Override
     public void show() {
-
         Gdx.input.setInputProcessor(this);
 
-        intro = new TextureRegion(new Texture(Gdx.files.internal("data/credits.png")), 0, 0, 480, 320);
+        Sfx.init();
+        Sfx.setCurrentMusic(0);
+        Sfx.playMusic();
+
+        intro = new TextureRegion(new Texture(Gdx.files.internal("data/gameover.png")), 0, 0, 480, 320);
         batch = new SpriteBatch();
         batch.getProjectionMatrix().setToOrtho2D(0f, 0f, 480, 320);
+
+        mainmenuBtn = new Sprite(new Texture(Gdx.files.internal("data/mainmenuBtn.png")));
+        mainmenuBtn.setPosition(280, 0);
+        mainmenuBtn.setSize(180, 163);
+
+        tryagainBtn = new Sprite(new Texture(Gdx.files.internal("data/tryagainBtn.png")));
+        tryagainBtn.setPosition(15, 0);
+        tryagainBtn.setSize(180, 163);
     }
 
     @Override
@@ -35,13 +50,9 @@ public class CreditsScreen extends BaseScreen  implements InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(intro, 0, 0);
+        mainmenuBtn.draw(batch);
+        tryagainBtn.draw(batch);
         batch.end();
-
-        if (Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
-            if (time > 1) {
-                gotoIntro();
-            }
-        }
     }
 
     @Override
@@ -67,7 +78,16 @@ public class CreditsScreen extends BaseScreen  implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        gotoIntro();
+        float pointerX = InputTransform.getCursorToModelX(Gdx.graphics.getWidth(), screenX);
+        float pointerY = InputTransform.getCursorToModelY(Gdx.graphics.getHeight(), screenY);
+
+        if (InputTransform.checkIfClicked(mainmenuBtn, pointerX, pointerY)) {
+            goMainMenu();
+        }
+
+        if (InputTransform.checkIfClicked(tryagainBtn, pointerX, pointerY)) {
+            goTryAgain();
+        }
 
         return false;
     }
@@ -92,7 +112,12 @@ public class CreditsScreen extends BaseScreen  implements InputProcessor {
         return false;
     }
 
-    private void gotoIntro() {
+    private void goMainMenu() {
         game.setScreen(new IntroScreen(game));
     }
+
+    private void goTryAgain() {
+        game.setScreen(new StartScreen(game));
+    }
+
 }

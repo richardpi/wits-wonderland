@@ -99,7 +99,6 @@ public class EndScreen extends BaseScreen  implements InputProcessor {
     }
 
     private void gotoIntro() {
-        Sfx.disposeMusic();
         game.setScreen(new IntroScreen(game));
     }
 }
