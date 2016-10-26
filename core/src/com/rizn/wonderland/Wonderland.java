@@ -7,7 +7,7 @@ import com.badlogic.gdx.Game;
 public class Wonderland extends Game {
     @Override
     public void create() {
-        Sfx.init();
+
         setScreen(new IntroScreen(this));
     }
 }

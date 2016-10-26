@@ -32,6 +32,8 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
 
         DevMode.setIsDevMode(true);
 
+        Sfx.init();
+
         if (Sfx.currentMusic == null) {
             Sfx.setCurrentMusic(0);
             Sfx.playMusic();

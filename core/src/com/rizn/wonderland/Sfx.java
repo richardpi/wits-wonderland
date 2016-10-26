@@ -16,14 +16,22 @@ public class Sfx {
     public static Sound jump;
     public static Sound die;
 
-    public static void init() {
-        sound = Gdx.audio.newSound(Gdx.files.internal("data/button-37.ogg"));
-        jump = Gdx.audio.newSound(Gdx.files.internal("data/jump2.ogg"));
-        die = Gdx.audio.newSound(Gdx.files.internal("data/die.ogg"));
+    public static boolean init = false;
 
-        intro = Gdx.audio.newMusic(Gdx.files.internal("data/welcome_screen.ogg"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("data/jungle_run.ogg"));
-        music2 = Gdx.audio.newMusic(Gdx.files.internal("data/little_swans.ogg"));
+    public static void init() {
+
+        if (!init) {
+            sound = Gdx.audio.newSound(Gdx.files.internal("data/button-37.ogg"));
+            jump = Gdx.audio.newSound(Gdx.files.internal("data/jump2.ogg"));
+            die = Gdx.audio.newSound(Gdx.files.internal("data/die.ogg"));
+
+            intro = Gdx.audio.newMusic(Gdx.files.internal("data/welcome_screen.ogg"));
+            music = Gdx.audio.newMusic(Gdx.files.internal("data/jungle_run.ogg"));
+            music2 = Gdx.audio.newMusic(Gdx.files.internal("data/little_swans.ogg"));
+
+            init = true;
+        }
+
     }
 
     public static void setCurrentMusic(int level) {
