@@ -7,8 +7,8 @@ gwt {
     minHeapSize="1G"
 
     src = files(file("src/")) // Needs to be in front of "modules" below.
-    modules 'com.badlogic.wonderland.GdxDefinition'
-    devModules 'com.badlogic.wonderland.GdxDefinitionSuperdev'
+    modules 'com.rizn.wonderland.GdxDefinition'
+    devModules 'com.rizn.wonderland.GdxDefinitionSuperdev'
 
     compiler {
         strict = true;
