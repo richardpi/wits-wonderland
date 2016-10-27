@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.rizn.wonderland.AdsInterface;
 import com.rizn.wonderland.InputTransform;
 import com.rizn.wonderland.Sfx;
 
@@ -22,8 +23,11 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
 
     boolean isVisible = false;
 
-    public GameOverScreen(Game game) {
+    protected AdsInterface ads;
+
+    public GameOverScreen(Game game, AdsInterface ads) {
         super(game);
+        this.ads = ads;
     }
 
     @Override
@@ -65,6 +69,7 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
         intro.getTexture().dispose();
         mainmenuBtn.getTexture().dispose();
         tryagainBtn.getTexture().dispose();
+        Sfx.disposeMusic();
     }
 
     @Override
@@ -122,11 +127,11 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
     }
 
     private void goMainMenu() {
-        game.setScreen(new IntroScreen(game));
+        game.setScreen(new IntroScreen(game, this.ads));
     }
 
     private void goTryAgain() {
-        game.setScreen(new StartScreen(game));
+        game.setScreen(new StartScreen(game, this.ads));
     }
 
 }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.rizn.wonderland.AdsInterface;
 import com.rizn.wonderland.DevMode;
 import com.rizn.wonderland.Sfx;
 import com.rizn.wonderland.Status;
@@ -18,8 +19,11 @@ public class EndScreen extends BaseScreen  implements InputProcessor {
     SpriteBatch batch;
     float time = 0;
 
-    public EndScreen(Game game) {
+    protected AdsInterface ads;
+
+    public EndScreen(Game game, AdsInterface ads) {
         super(game);
+        this.ads = ads;
     }
 
     @Override
@@ -54,6 +58,7 @@ public class EndScreen extends BaseScreen  implements InputProcessor {
     public void hide() {
         batch.dispose();
         intro.getTexture().dispose();
+        Sfx.disposeMusic();
     }
 
     @Override
@@ -99,6 +104,6 @@ public class EndScreen extends BaseScreen  implements InputProcessor {
     }
 
     private void gotoIntro() {
-        game.setScreen(new IntroScreen(game));
+        game.setScreen(new IntroScreen(game, this.ads));
     }
 }

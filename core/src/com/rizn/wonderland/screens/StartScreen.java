@@ -1,6 +1,7 @@
 
 package com.rizn.wonderland.screens;
 
+import com.rizn.wonderland.AdsInterface;
 import com.rizn.wonderland.Levels;
 import com.rizn.wonderland.Save;
 import com.rizn.wonderland.Sfx;
@@ -21,8 +22,11 @@ public class StartScreen extends BaseScreen {
 
     BitmapFont font;
 
-    public StartScreen(Game game) {
+    protected AdsInterface ads;
+
+    public StartScreen(Game game, AdsInterface ads) {
         super(game);
+        this.ads = ads;
     }
 
     @Override
@@ -58,7 +62,7 @@ public class StartScreen extends BaseScreen {
 
         if (time > 1) {
             if (time > 3 || Gdx.input.isKeyPressed(Input.Keys.ANY_KEY) || Gdx.input.justTouched()) {
-                game.setScreen(new GameScreen(game));
+                game.setScreen(new GameScreen(game, this.ads));
             }
         }
 
@@ -68,6 +72,7 @@ public class StartScreen extends BaseScreen {
     public void hide() {
         Sfx.disposeMusic();
         batch.dispose();
+        font.dispose();
         intro.getTexture().dispose();
     }
 

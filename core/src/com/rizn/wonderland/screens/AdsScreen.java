@@ -49,14 +49,13 @@ public class AdsScreen extends BaseScreen {
                 ads.showInterstitialAd(new Runnable() {
                     @Override
                     public void run() {
-                        //todo: go to game start
-                        Gdx.app.exit();
+                        playGame();
                     }
                 });
             }
 
         } else {
-            //todo: go to game start
+            playGame();
         }
     }
 
@@ -64,6 +63,10 @@ public class AdsScreen extends BaseScreen {
     public void hide() {
         batch.dispose();
         intro.getTexture().dispose();
+    }
+
+    private void playGame() {
+        game.setScreen(new StartScreen(game, this.ads));
     }
 
 }

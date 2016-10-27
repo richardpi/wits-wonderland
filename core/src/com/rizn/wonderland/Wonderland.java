@@ -19,6 +19,6 @@ public class Wonderland extends Game {
     @Override
     public void create() {
         setScreen(new AdsScreen(this, this.ads));
-        //setScreen(new IntroScreen(this));
+        setScreen(new IntroScreen(this, this.ads));
     }
 }

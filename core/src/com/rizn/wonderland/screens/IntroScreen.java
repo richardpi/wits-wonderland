@@ -20,8 +20,11 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
     private Sprite skin;
     private Sprite credits;
 
-    public IntroScreen(Game game) {
+    protected AdsInterface ads;
+
+    public IntroScreen(Game game, AdsInterface ads) {
         super(game);
+        this.ads = ads;
     }
 
     @Override
@@ -30,11 +33,8 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
         DevMode.setIsDevMode(true);
 
         Sfx.init();
-
-        if (Sfx.currentMusic == null) {
-            Sfx.setCurrentMusic(0);
-            Sfx.playMusic();
-        }
+        Sfx.setCurrentMusic(0);
+        Sfx.playMusic();
 
         Gdx.input.setInputProcessor(this);
 
@@ -63,7 +63,7 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
         if (Gdx.input.isKeyPressed(Input.Keys.F1) && DevMode.isDevMode()) {
             Sfx.disposeMusic();
             Status.setSlot(1);
-            game.setScreen(new GameScreen(game));
+            game.setScreen(new GameScreen(game, this.ads));
         }
     }
 
@@ -71,6 +71,9 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
     public void hide() {
         batch.dispose();
         intro.getTexture().dispose();
+        skin.getTexture().dispose();
+        credits.getTexture().dispose();
+        Sfx.disposeMusic();
     }
 
     @Override
@@ -95,11 +98,11 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
         float pointerY = InputTransform.getCursorToModelY(Gdx.graphics.getHeight(), screenY);
 
         if (InputTransform.checkIfClicked(skin, pointerX, pointerY)) {
-            game.setScreen(new SlotScreen(game));
+            game.setScreen(new SlotScreen(game, this.ads));
         }
 
         if (InputTransform.checkIfClicked(credits, pointerX, pointerY)) {
-            game.setScreen(new CreditsScreen(game));
+            game.setScreen(new CreditsScreen(game, this.ads));
         }
 
         return false;

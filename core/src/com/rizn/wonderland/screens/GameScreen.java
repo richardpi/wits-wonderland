@@ -12,9 +12,11 @@ public class GameScreen extends BaseScreen {
     MapRenderer renderer;
     OnscreenControlRenderer controlRenderer;
     public Lives lives;
+    protected AdsInterface ads;
 
-    public GameScreen(Game game) {
+    public GameScreen(Game game, AdsInterface ads) {
         super(game);
+        this.ads = ads;
     }
 
     @Override
@@ -58,23 +60,25 @@ public class GameScreen extends BaseScreen {
         renderer.dispose();
         controlRenderer.dispose();
         lives.dispose();
+        Sfx.disposeMusic();
     }
 
     private void gameOver() {
         Counter.reset();
         Sfx.disposeMusic();
-        game.setScreen(new GameOverScreen(game));
+        game.setScreen(new GameOverScreen(game, this.ads));
     }
 
     private void endGame() {
         Counter.reset();
         Sfx.disposeMusic();
-        game.setScreen(new EndScreen(game));
+        game.setScreen(new EndScreen(game, this.ads));
     }
 
     private void nextLevel() {
         Counter.reset();
         Sfx.disposeMusic();
-        game.setScreen(new StartScreen(game));
+        game.setScreen(new AdsScreen(game, this.ads));
+        //game.setScreen(new StartScreen(game));
     }
 }

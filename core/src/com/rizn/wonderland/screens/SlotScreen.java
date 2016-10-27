@@ -1,8 +1,10 @@
 package com.rizn.wonderland.screens;
 
+import com.rizn.wonderland.AdsInterface;
 import com.rizn.wonderland.InputTransform;
 import com.rizn.wonderland.Levels;
 import com.rizn.wonderland.Save;
+import com.rizn.wonderland.Sfx;
 import com.rizn.wonderland.Status;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -27,9 +29,12 @@ public class SlotScreen extends BaseScreen implements InputProcessor {
 
     float marginX = 60;
     float marginY = 29;
-    
-    public SlotScreen(Game game) {
+
+    protected AdsInterface ads;
+
+    public SlotScreen(Game game, AdsInterface ads) {
         super(game);
+        this.ads = ads;
     }
 
     @Override
@@ -84,10 +89,16 @@ public class SlotScreen extends BaseScreen implements InputProcessor {
 
         batch.dispose();
         intro.getTexture().dispose();
+        font.dispose();
+        slotBtn1.getTexture().dispose();
+        slotBtn2.getTexture().dispose();
+        slotBtn3.getTexture().dispose();
+        Sfx.disposeMusic();
     }
 
     private void play() {
-        game.setScreen(new StartScreen(game));
+        //game.setScreen(new StartScreen(game));
+        game.setScreen(new AdsScreen(game, this.ads));
     }
 
     @Override
