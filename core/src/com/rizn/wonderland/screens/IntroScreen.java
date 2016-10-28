@@ -30,7 +30,7 @@ public class IntroScreen extends BaseScreen implements InputProcessor {
     @Override
     public void show() {
 
-        DevMode.setIsDevMode(true);
+        DevMode.setIsDevMode(false);
 
         if (!Sfx.isPlaying()) {
             Sfx.init();
