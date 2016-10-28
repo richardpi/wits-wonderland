@@ -97,8 +97,12 @@ public class SlotScreen extends BaseScreen implements InputProcessor {
     }
 
     private void play() {
-        //game.setScreen(new StartScreen(game));
-        game.setScreen(new AdsScreen(game, this.ads));
+        //first level shouldn't have ads
+        if (1 >= Save.getLevel(Status.getSlot())) {
+            game.setScreen(new StartScreen(game, this.ads));
+        } else {
+            game.setScreen(new AdsScreen(game, this.ads));
+        }
     }
 
     @Override

@@ -131,7 +131,7 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
     }
 
     private void goTryAgain() {
-        game.setScreen(new StartScreen(game, this.ads));
+        game.setScreen(new AdsScreen(game, this.ads));
     }
 
 }
