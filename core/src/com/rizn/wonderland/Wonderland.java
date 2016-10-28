@@ -21,4 +21,17 @@ public class Wonderland extends Game {
         setScreen(new AdsScreen(this, this.ads));
         setScreen(new IntroScreen(this, this.ads));
     }
+
+    @Override
+    public void dispose() {
+        // Clear you Screen Explicitly
+        getScreen().dispose();
+        Gdx.app.exit();
+    }
+
+    @Override
+    public void pause () {
+        //getScreen().dispose();
+        //Gdx.app.exit();
+    }
 }

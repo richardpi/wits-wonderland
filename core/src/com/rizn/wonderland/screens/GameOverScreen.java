@@ -69,7 +69,12 @@ public class GameOverScreen extends BaseScreen implements InputProcessor {
         intro.getTexture().dispose();
         mainmenuBtn.getTexture().dispose();
         tryagainBtn.getTexture().dispose();
-        Sfx.disposeMusic();
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        game.setScreen(new IntroScreen(game, this.ads));
     }
 
     @Override

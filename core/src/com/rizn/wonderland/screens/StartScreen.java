@@ -31,13 +31,15 @@ public class StartScreen extends BaseScreen {
 
     @Override
     public void show() {
-        if (0 == Save.getLevel(Status.getSlot())) {
-            Save.setLevel(Status.getSlot(), 1);
-        }
 
-        if (!Sfx.currentMusic.isPlaying()) {
+        if (!Sfx.isPlaying()) {
+            Sfx.init();
             Sfx.setCurrentMusic(0);
             Sfx.playMusic();
+        }
+
+        if (0 == Save.getLevel(Status.getSlot())) {
+            Save.setLevel(Status.getSlot(), 1);
         }
 
         font = new BitmapFont(Gdx.files.internal("data/freesans.fnt"));
@@ -66,6 +68,12 @@ public class StartScreen extends BaseScreen {
             }
         }
 
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        game.setScreen(new IntroScreen(game, this.ads));
     }
 
     @Override

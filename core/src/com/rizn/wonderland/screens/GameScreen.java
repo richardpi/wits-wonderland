@@ -1,6 +1,7 @@
 
 package com.rizn.wonderland.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -63,6 +64,17 @@ public class GameScreen extends BaseScreen {
         Sfx.disposeMusic();
     }
 
+    @Override
+    public void dispose() {
+        hide();
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        game.setScreen(new IntroScreen(game, this.ads));
+    }
+
     private void gameOver() {
         Counter.reset();
         Sfx.disposeMusic();
@@ -79,6 +91,5 @@ public class GameScreen extends BaseScreen {
         Counter.reset();
         Sfx.disposeMusic();
         game.setScreen(new AdsScreen(game, this.ads));
-        //game.setScreen(new StartScreen(game));
     }
 }

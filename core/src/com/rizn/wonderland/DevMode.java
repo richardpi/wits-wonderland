@@ -1,5 +1,6 @@
 package com.rizn.wonderland;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 
 public class DevMode {
@@ -12,6 +13,11 @@ public class DevMode {
 
     public static void setIsDevMode(boolean isDevMode) {
         DevMode.isDevMode = isDevMode;
+
+        if (isDevMode) {
+            Gdx.app.setLogLevel(Application.LOG_DEBUG);
+        }
+
     }
 
     public static boolean checkIfDevPressed() {

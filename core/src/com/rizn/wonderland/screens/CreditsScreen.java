@@ -27,6 +27,12 @@ public class CreditsScreen extends BaseScreen  implements InputProcessor {
     @Override
     public void show() {
 
+        if (!Sfx.isPlaying()) {
+            Sfx.init();
+            Sfx.setCurrentMusic(0);
+            Sfx.playMusic();
+        }
+
         Gdx.input.setInputProcessor(this);
 
         intro = new TextureRegion(new Texture(Gdx.files.internal("data/credits.png")), 0, 0, 480, 320);
@@ -49,10 +55,15 @@ public class CreditsScreen extends BaseScreen  implements InputProcessor {
     }
 
     @Override
+    public void resume() {
+        super.resume();
+        game.setScreen(new IntroScreen(game, this.ads));
+    }
+
+    @Override
     public void hide() {
         batch.dispose();
         intro.getTexture().dispose();
-        Sfx.disposeMusic();
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
@@ -13,6 +14,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.rizn.wonderland.AdTutorial;
 import com.rizn.wonderland.AdsInterface;
+import com.rizn.wonderland.Sfx;
 import com.rizn.wonderland.Wonderland;
 
 public class AndroidLauncher extends AndroidApplication implements AdsInterface {
@@ -68,5 +70,11 @@ public class AndroidLauncher extends AndroidApplication implements AdsInterface 
         NetworkInfo ni = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
         return (ni != null && ni.isConnected());
+    }
+
+    @Override
+    protected void onPause () {
+        super.onPause();
+        Sfx.disposeMusic();
     }
 }

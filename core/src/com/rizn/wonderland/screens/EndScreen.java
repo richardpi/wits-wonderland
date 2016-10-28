@@ -62,6 +62,12 @@ public class EndScreen extends BaseScreen  implements InputProcessor {
     }
 
     @Override
+    public void resume() {
+        super.resume();
+        game.setScreen(new IntroScreen(game, this.ads));
+    }
+
+    @Override
     public boolean keyDown(int keycode) {
         return false;
     }

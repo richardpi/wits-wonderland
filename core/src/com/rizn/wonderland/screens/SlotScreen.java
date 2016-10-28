@@ -42,6 +42,12 @@ public class SlotScreen extends BaseScreen implements InputProcessor {
 
         isVisible = true;
 
+        if (!Sfx.isPlaying()) {
+            Sfx.init();
+            Sfx.setCurrentMusic(0);
+            Sfx.playMusic();
+        }
+
         Gdx.input.setInputProcessor(this);
         font = new BitmapFont(Gdx.files.internal("data/freesans.fnt"));
 
@@ -93,7 +99,12 @@ public class SlotScreen extends BaseScreen implements InputProcessor {
         slotBtn1.getTexture().dispose();
         slotBtn2.getTexture().dispose();
         slotBtn3.getTexture().dispose();
-        Sfx.disposeMusic();
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        game.setScreen(new IntroScreen(game, this.ads));
     }
 
     private void play() {
